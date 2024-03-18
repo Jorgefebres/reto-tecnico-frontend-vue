@@ -8,6 +8,20 @@
 
 - Instale axios para hacer las peticiones http a la api de reddit y cree un archivo redditAPI para tener ahi la config de la API
 
+---
+
+- cree una carpeta modulos para modularizar la app, se que no es necesario por el tamaño del proyecto, pero lo considero una buena práctica y me servira de ejemplo para implementar un routing propio en el modulo de entradas de reddit.
+
+- Elimine los componentes helloWorld y about que no los voy a estar necesitando y modifique el componente home para que me sirva a modo de entrada a la aplicación, todo ello para poder probar el routing.
+
+- cambie el logo de vue por el logo de reddit,
+
+- cree un nav aun sin estilos (Para esto estoy pensando utilizar boostrap por temas de tiempo),
+
+- Agregue una regla al Eslint para que me permita tener nombres simples en mis componentes por ejemplo Navbar en vez de NavbarVue o NavbarComponent, esto por preferencia personal.
+
+- Agregue alguna estructura de carpetas q pienso que voy a estar necesitando a futuro dentro del modulo de las entradas de reddit.
+
 ## Project setup
 
 ```
