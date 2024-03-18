@@ -22,6 +22,12 @@
 
 - Agregue alguna estructura de carpetas q pienso que voy a estar necesitando a futuro dentro del modulo de las entradas de reddit.
 
+---
+
+- Agregue boostrap para tener algunos estilos predefinidos.
+
+- Agregue una carpeta css con un archivo styles.scss (voy a estar usando sass para esto tuve q instalar sass y sass loader como dependencias de desarrollo) y unos estilos reset del css para evitar que algunos estilos difieran segun el navegador.
+
 ## Project setup
 
 ```

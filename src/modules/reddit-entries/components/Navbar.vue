@@ -1,11 +1,15 @@
 <template>
-  <nav>
-    <a href=""
-      ><img src="@/assets/logo.png" alt="reddit logo" height="24" />Top
-      Entries</a
+  <nav class="navbar bg-primary">
+    <a class="navbar-brand" href=""
+      ><img
+        src="@/assets/logo.webp"
+        alt="reddit logo"
+        height="40"
+        width="40"
+        class="d-inline-block mx-2"
+      />50 Entradas Principales</a
     >
   </nav>
-  <hr />
 </template>
 <script>
 export default {
