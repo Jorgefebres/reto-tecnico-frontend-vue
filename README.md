@@ -49,6 +49,12 @@
 
 ![Maquetado imagen seleccionada en pantalla completa](https://res.cloudinary.com/dhromiae3/image/upload/v1710784591/reto-tecnico/ckymehlkc6t3t6rfsbob.png)
 
+---
+
+- Agregué la maquetación y funcionalidad de paginación en la lista de entradas.
+
+![Maquetado paginación](https://res.cloudinary.com/dhromiae3/image/upload/v1710786308/reto-tecnico/tqiyjwdmxyucnspkq5ua.png)
+
 ## Project setup
 
 ```
