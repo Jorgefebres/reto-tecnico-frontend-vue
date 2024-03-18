@@ -19,6 +19,8 @@
         <img
           @click="toggleFullscreen"
           class="my-3"
+          :height="entry.thumbnailHeight"
+          :width="entry.thumbnailWidth"
           :src="entry.thumbnail"
           alt="thumbnail"
         />
@@ -135,9 +137,6 @@ export default {
   .entry-thumbnail-container {
     text-align: center;
     width: 100%;
-    // img {
-    //   width: 80%;
-    // }
   }
 }
 

@@ -18,6 +18,8 @@ export const loadEntries = async ({ commit }) => {
       created: child.data.created,
       createdUTC: child.data.created_utc,
       thumbnail: child.data.thumbnail,
+      thumbnailWidth: child.data.thumbnail_width,
+      thumbnailHeight: child.data.thumbnail_height,
       fullImage: child.data.url_overridden_by_dest,
       numComments: child.data.num_comments,
       read: false,

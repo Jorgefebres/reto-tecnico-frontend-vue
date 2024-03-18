@@ -73,6 +73,26 @@
 
 ![Integración](https://res.cloudinary.com/dhromiae3/image/upload/v1710796074/reto-tecnico/zlkyuy1xgcuzqxnyiwtz.png)
 
+---
+
+- Agregué una condicional para ocultar las imagenes cuando el post no tienen un thumbnail.
+
+- Agregué la funcionalidad de al hacer click en el thumbnail se cargue la imagen en tamaño completo, o en su defecto se muestre el propio thumbnail (cuando la imagen en tamaño completo no sea válida).
+
+- Ya estoy mostrando los posts en el lado derecho.
+
+- Corregí la paginacion, de momento tiene 10 items por pagina y solo los botones para la pagina anterior y siguiente.
+
+(\*) Ya me falta muy poco para terminar, en el proximo commit estare enviando el estado persistido de los post leídos o no leídos, no me quedan claros un par de requerimiento:
+• Guardar imágenes en la galería de imágenes.
+• Botón Descartar publicación.
+
+asumiré que se necesita persistir en una base de datos para esto entiendo que puedo usar algo como firebase, entiendo que reddit no tiene una funcionalidad incorporada para marcar posts como leídos o no leídos, para esto tambien creo que puedo usar un restApi en firebase para persistir esta data no solo de manera local con el store, sino tambien para cuando vuelva a entrar a la aplicación a traves de esta db.
+
+---
+
+- Arreglando el ancho y alto de las imagenes y de la pantalla de bienvenida.
+
 ## Project setup
 
 ```

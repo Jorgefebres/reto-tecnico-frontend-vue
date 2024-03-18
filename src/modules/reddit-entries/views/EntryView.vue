@@ -117,9 +117,6 @@ export default {
   .entry-thumbnail-container {
     text-align: center;
     width: 100%;
-    img {
-      width: 80%;
-    }
   }
 }
 
