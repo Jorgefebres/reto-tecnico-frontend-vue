@@ -6,14 +6,14 @@
       </h2>
       <div class="pagination">
         <button
-          class="btn btn-info"
+          class="btn btn-info text-white"
           @click="prevPage"
           :disabled="currentPage === 1"
         >
           Anterior
         </button>
         <button
-          class="btn btn-info"
+          class="btn btn-info text-white"
           @click="nextPage"
           :disabled="currentPage === totalPages"
         >

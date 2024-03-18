@@ -55,6 +55,14 @@
 
 ![Maquetado paginación](https://res.cloudinary.com/dhromiae3/image/upload/v1710786308/reto-tecnico/tqiyjwdmxyucnspkq5ua.png)
 
+---
+
+- Cambié el diseño para soportar doble vista (izq (entrada) - der (detalle)) q se pide en la 2da parte del reto.
+
+- Algunos ajustes en el color del texto.
+
+![Maquetado izq - der](https://res.cloudinary.com/dhromiae3/image/upload/v1710790116/reto-tecnico/ifkys7imj1z1mtadwba5.png)
+
 ## Project setup
 
 ```

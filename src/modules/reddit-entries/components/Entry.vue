@@ -36,11 +36,14 @@
         </div>
       </div>
       <div class="entry-options-container d-flex justify-content-end gap-3">
-        <button class="btn btn-info">
-          <i class="fa fa-check-double"></i><span class="option"></span>
+        <button class="btn btn-info text-white">
+          <i class="fa fa-check-double"></i>
         </button>
-        <button class="btn btn-info">
-          <i class="fa fa-comment"></i><span class="option">312</span>
+        <button
+          class="btn btn-info d-flex align-items-center justify-content-center"
+        >
+          <i class="fa fa-comment text-white"></i>
+          <span class="option text-white">312</span>
         </button>
       </div>
     </div>
@@ -81,7 +84,7 @@ export default {
   justify-content: center;
 }
 .entry {
-  width: 60%;
+  width: 90%;
   border-bottom: 1px solid #2e3e50;
   transition: 0.2s all ease-in;
   &:hover {
@@ -96,6 +99,7 @@ export default {
   }
 
   .entry-title {
+    font-size: 16px;
     color: #50636a;
   }
   .entry-thumbnail-container {
@@ -109,8 +113,9 @@ export default {
 
 .entry-options-container {
   .option {
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 2px;
+    margin-top: 4px;
   }
 }
 

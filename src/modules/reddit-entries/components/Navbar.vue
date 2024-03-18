@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar bg-primary">
-    <a class="navbar-brand" href=""
+  <nav class="navbar bg-info">
+    <a class="navbar-brand text-white" href=""
       ><img
         src="@/assets/logo.webp"
         alt="reddit logo"

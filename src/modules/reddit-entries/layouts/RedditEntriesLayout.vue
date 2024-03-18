@@ -1,6 +1,9 @@
 <template>
   <Navbar />
-  <EntryList />
+  <div class="col-5">
+    <EntryList />
+  </div>
+  <div class="col"><router-view /></div>
 </template>
 <script>
 import { defineAsyncComponent } from "vue";
