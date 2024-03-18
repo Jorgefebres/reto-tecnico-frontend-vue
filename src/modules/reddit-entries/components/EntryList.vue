@@ -1,9 +1,7 @@
 <template>
   <div class="entry-list-container">
     <div class="entry-scrollable-area">
-      <h2 v-for="(item, index) in paginatedEntries" :key="index">
-        <Entry />
-      </h2>
+      <Entry v-for="entry in entries" :key="entry.id" :entry="entry" />
       <div class="pagination">
         <button
           class="btn btn-info text-white"
@@ -26,6 +24,7 @@
 
 <script>
 import { defineAsyncComponent } from "vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -34,13 +33,17 @@ export default {
 
   data() {
     return {
-      entries: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
       entriesPerPage: 5,
       currentPage: 1,
     };
   },
 
   computed: {
+    ...mapGetters("reddit-entries", ["getTopEntries"]),
+    entries() {
+      return this.getTopEntries();
+    },
+
     totalPages() {
       return Math.ceil(this.entries.length / this.entriesPerPage);
     },

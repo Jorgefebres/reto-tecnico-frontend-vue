@@ -63,6 +63,16 @@
 
 ![Maquetado izq - der](https://res.cloudinary.com/dhromiae3/image/upload/v1710790116/reto-tecnico/ifkys7imj1z1mtadwba5.png)
 
+---
+
+- Agregué la pegada a la API de top entradas, agregue las configuraciones necesarias para poder tener la data en un store para poder tener toda esta data centralizada y pueda manejarse de manera correcta.
+
+- Hice el mapeo de la data, segun lo q solicita el reto.
+
+- Agregue algunos Helpers y funciones para trabajar las imagenes y devolver las horas en el formato requerido en el reto.
+
+![Integración](https://res.cloudinary.com/dhromiae3/image/upload/v1710796074/reto-tecnico/zlkyuy1xgcuzqxnyiwtz.png)
+
 ## Project setup
 
 ```

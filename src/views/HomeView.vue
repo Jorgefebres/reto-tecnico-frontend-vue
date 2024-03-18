@@ -13,7 +13,7 @@ export default {
   components: {},
   methods: {
     goToRedditEntries() {
-      this.$router.push({ name: "reddit-entries" });
+      this.$router.push({ name: "no-entry-selected" });
     },
   },
 };

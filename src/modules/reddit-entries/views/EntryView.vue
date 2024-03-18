@@ -1,19 +1,25 @@
 <template>
-  <div
-    class="entry-container"
-    @click="$router.push({ name: 'entry', params: { id: entry.id } })"
-  >
+  <div class="entry-container">
     <div class="entry mb-3 pointer p-2">
       <div class="entry-description">
         <img src="@/assets/logo.webp" alt="avatar" height="20" width="20" />
-        <span>{{ entry.author }}</span> -
-        <span>Hace {{ getHoursAgo }} horas</span>
+        <span>Usuario</span>
+        <span>Hace 3 horas</span>
       </div>
       <div class="entry-title d-flex">
-        <span>{{ entry.title }}</span>
+        <span
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+          adipisci libero omnis, tempora tenetur ullam nam reprehenderit dolorum
+          laboriosam corrupti, itaque facilis ea enim quos quis totam amet? Cum,
+          facilis.</span
+        >
       </div>
       <div class="entry-thumbnail-container" @click="toggleFullscreen">
-        <img class="my-3" :src="entry.thumbnail" alt="thumbnail" />
+        <img
+          class="my-3"
+          src="https://res.cloudinary.com/dhromiae3/image/upload/v1710725485/cld-sample-4.jpg"
+          alt="thumbnail"
+        />
         <!-- Pantalla completa -->
         <div
           v-if="fullscreen"
@@ -37,7 +43,7 @@
           class="btn btn-info d-flex align-items-center justify-content-center"
         >
           <i class="fa fa-comment text-white"></i>
-          <span class="option text-white">{{ entry.numComments }}</span>
+          <span class="option text-white">312</span>
         </button>
       </div>
     </div>
@@ -45,17 +51,8 @@
 </template>
 
 <script>
-import isImageUrlValid from "@/modules/helpers/image";
-
 export default {
-  name: "Entry",
-
-  props: {
-    entry: {
-      type: Object,
-      required: true,
-    },
-  },
+  name: "EntryView",
 
   data() {
     return {
@@ -64,31 +61,12 @@ export default {
     };
   },
 
-  computed: {
-    getHoursAgo() {
-      // Timestamp del post
-      const timestamp = this.entry.created;
-      // Convertir el timestamp a milisegundos multiplicando por 1000
-      const timestampMs = timestamp * 1000;
-      // Crear un objeto Date con el timestamp en milisegundos
-      const postDate = new Date(timestampMs);
-      // Obtener la fecha actual
-      const currentDate = new Date();
-      // Calcular la diferencia entre la fecha actual y la fecha del post en horas
-      const diffInHours = Math.abs(currentDate - postDate) / (1000 * 60 * 60);
-      // Redondear el resultado a dos decimales
-      const diffInHoursRounded = Math.round(diffInHours * 100) / 100;
-      return Math.round(Math.abs(diffInHoursRounded));
-    },
-  },
-
   methods: {
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen;
       if (this.fullscreen) {
-        this.fullscreenImageSrc = isImageUrlValid(this.entry.fullImage)
-          ? this.entry.fullImage
-          : this.entry.thumbnail;
+        this.fullscreenImageSrc =
+          "https://res.cloudinary.com/dhromiae3/image/upload/v1710725485/cld-sample-4.jpg";
         // Deshabilitando scroll cuando esta en pantalla completa
         document.body.style.overflow = "hidden";
       } else {
@@ -116,7 +94,7 @@ export default {
   .entry-description {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 12px;
     font-size: 12px;
   }
 
