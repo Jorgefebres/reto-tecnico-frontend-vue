@@ -18,24 +18,36 @@
 
 - cree un nav aun sin estilos (Para esto estoy pensando utilizar boostrap por temas de tiempo),
 
-- Agregue una regla al Eslint para que me permita tener nombres simples en mis componentes por ejemplo Navbar en vez de NavbarVue o NavbarComponent, esto por preferencia personal.
+- Agregué una regla al Eslint para que me permita tener nombres simples en mis componentes por ejemplo Navbar en vez de NavbarVue o NavbarComponent, esto por preferencia personal.
 
-- Agregue alguna estructura de carpetas q pienso que voy a estar necesitando a futuro dentro del modulo de las entradas de reddit.
-
----
-
-- Agregue boostrap para tener algunos estilos predefinidos.
-
-- Agregue una carpeta css con un archivo styles.scss (voy a estar usando sass para esto tuve q instalar sass y sass loader como dependencias de desarrollo) y unos estilos reset del css para evitar que algunos estilos difieran segun el navegador.
+- Agregué alguna estructura de carpetas q pienso que voy a estar necesitando a futuro dentro del modulo de las entradas de reddit.
 
 ---
 
-- Agregue un componente para contener el listado (Entry list) de entradas (Entry).
-- Agregue un maquetado inicial con la data que se requiere mostrar por entrada.
+- Agregué boostrap para tener algunos estilos predefinidos.
+
+- Agregué una carpeta css con un archivo styles.scss (voy a estar usando sass para esto tuve q instalar sass y sass loader como dependencias de desarrollo) y unos estilos reset del css para evitar que algunos estilos difieran segun el navegador.
+
+---
+
+- Agregué un componente para contener el listado (Entry list) de entradas (Entry).
+- Agregué un maquetado inicial con la data que se requiere mostrar por entrada.
 
 ![Maquetado inicial Desktop](https://res.cloudinary.com/dhromiae3/image/upload/v1710781925/reto-tecnico/uzrd8rd2pmliga5qnlfc.png)
 
 ![Maquetado inicial Mobile](https://res.cloudinary.com/dhromiae3/image/upload/v1710782114/reto-tecnico/iyg1xebuauyajac4saj4.png)
+
+---
+
+- Agregué el cdn de fontawesome para poder utilizar algunos iconos que voy a estar necesitando (como el de los comentarios o el avatar, salir de la aplicacion, etc)
+
+- Agregué una maquetación con la informacion sobre si la entrada ha sido leida, el nro de comentarios de la entrada.
+
+![Maquetado número de comentarios y entrada vista](https://res.cloudinary.com/dhromiae3/image/upload/v1710784590/reto-tecnico/ayisc1zl61moqrk75lxe.png)
+
+- Agregué la funcionalidad de mostrar en pantalla completa la imagen una vez seleccionada.
+
+![Maquetado imagen seleccionada en pantalla completa](https://res.cloudinary.com/dhromiae3/image/upload/v1710784591/reto-tecnico/ckymehlkc6t3t6rfsbob.png)
 
 ## Project setup
 
