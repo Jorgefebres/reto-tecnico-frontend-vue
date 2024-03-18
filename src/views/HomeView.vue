@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1>Home</h1>
-    <button @click="goToRedditEntries">Ingresar</button>
+    <h1>Bienvenido</h1>
+    <button class="btn btn-primary" @click="goToRedditEntries">
+      Ver 50 entradas principales
+    </button>
   </div>
 </template>
 

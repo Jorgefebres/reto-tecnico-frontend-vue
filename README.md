@@ -28,6 +28,15 @@
 
 - Agregue una carpeta css con un archivo styles.scss (voy a estar usando sass para esto tuve q instalar sass y sass loader como dependencias de desarrollo) y unos estilos reset del css para evitar que algunos estilos difieran segun el navegador.
 
+---
+
+- Agregue un componente para contener el listado (Entry list) de entradas (Entry).
+- Agregue un maquetado inicial con la data que se requiere mostrar por entrada.
+
+![Maquetado inicial Desktop](hhttps://res.cloudinary.com/dhromiae3/image/upload/v1710781925/reto-tecnico/uzrd8rd2pmliga5qnlfc.png)
+
+![Maquetado inicial Mobile](https://res.cloudinary.com/dhromiae3/image/upload/v1710782114/reto-tecnico/iyg1xebuauyajac4saj4.png)
+
 ## Project setup
 
 ```

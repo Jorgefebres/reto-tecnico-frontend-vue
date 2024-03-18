@@ -1,8 +1,6 @@
 <template>
   <Navbar />
-  <div>
-    <div><router-view></router-view></div>
-  </div>
+  <EntryList />
 </template>
 <script>
 import { defineAsyncComponent } from "vue";
@@ -10,6 +8,11 @@ import { defineAsyncComponent } from "vue";
 export default {
   components: {
     Navbar: defineAsyncComponent(() => import("../components/Navbar.vue")),
+    EntryList: defineAsyncComponent(() =>
+      import("../components/EntryList.vue")
+    ),
   },
 };
 </script>
+
+<style scoped></style>
