@@ -1,31 +1,21 @@
 <template>
-  <div class="entry-container">
-    <div class="entry mb-3 pointer p-2">
-      <div class="entry-description">
-        <img src="@/assets/logo.webp" alt="avatar" height="20" width="20" />
-        <span>Usuario</span>
-        <span>Hace 3 horas</span>
-      </div>
+  <div v-if="entry" class="entry-container">
+    <div class="entry mb-3 p-2">
       <div class="entry-title d-flex">
-        <span
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-          adipisci libero omnis, tempora tenetur ullam nam reprehenderit dolorum
-          laboriosam corrupti, itaque facilis ea enim quos quis totam amet? Cum,
-          facilis.</span
-        >
+        <span>{{ entry.title }}</span>
       </div>
-      <div class="entry-thumbnail-container" @click="toggleFullscreen">
+      <div
+        v-if="checkIfImageIsValid(entry.thumbnail)"
+        class="entry-thumbnail-container"
+      >
         <img
-          class="my-3"
-          src="https://res.cloudinary.com/dhromiae3/image/upload/v1710725485/cld-sample-4.jpg"
+          @click="toggleFullscreen"
+          class="pointer my-3"
+          :src="entry.thumbnail"
           alt="thumbnail"
         />
         <!-- Pantalla completa -->
-        <div
-          v-if="fullscreen"
-          class="fullscreen-overlay"
-          @click="toggleFullscreen"
-        >
+        <div v-if="fullscreen" class="fullscreen-overlay">
           <button
             @click="toggleFullscreen"
             class="btn btn-outline-info exit-fullscreen-btn mx-2"
@@ -36,43 +26,76 @@
         </div>
       </div>
       <div class="entry-options-container d-flex justify-content-end gap-3">
-        <button class="btn btn-info text-white">
+        <!-- <button class="btn btn-info text-white">
           <i class="fa fa-check-double"></i>
         </button>
         <button
           class="btn btn-info d-flex align-items-center justify-content-center"
         >
           <i class="fa fa-comment text-white"></i>
-          <span class="option text-white">312</span>
-        </button>
+          <span class="option text-white">{{ entry.numComments }}</span>
+        </button> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import isImageUrlValid from "@/modules/helpers/image";
+import { mapGetters } from "vuex";
+
 export default {
   name: "EntryView",
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+  },
 
   data() {
     return {
+      entry: null,
       fullscreen: false,
       fullscreenImageSrc: "",
     };
+  },
+
+  computed: {
+    ...mapGetters("reddit-entries", ["getEntryById"]),
   },
 
   methods: {
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen;
       if (this.fullscreen) {
-        this.fullscreenImageSrc =
-          "https://res.cloudinary.com/dhromiae3/image/upload/v1710725485/cld-sample-4.jpg";
+        this.fullscreenImageSrc = this.checkIfImageIsValid(this.entry.fullImage)
+          ? this.entry.fullImage
+          : this.entry.thumbnail;
         // Deshabilitando scroll cuando esta en pantalla completa
         document.body.style.overflow = "hidden";
       } else {
         // Habilitando scroll cuando no esta en pantalla completa
         document.body.style.overflow = "";
       }
+    },
+    checkIfImageIsValid(url) {
+      return isImageUrlValid(url);
+    },
+    loadEntry() {
+      const entry = this.getEntryById(this.id);
+      if (!entry) return this.$router.push({ name: "no-entry" });
+      this.entry = entry;
+    },
+  },
+
+  created() {
+    this.loadEntry();
+  },
+
+  watch: {
+    id() {
+      this.loadEntry();
     },
   },
 };
@@ -85,18 +108,7 @@ export default {
 }
 .entry {
   width: 90%;
-  border-bottom: 1px solid #2e3e50;
   transition: 0.2s all ease-in;
-  &:hover {
-    background-color: lighten($color: grey, $amount: 45);
-    transition: 0.2s all ease-in;
-  }
-  .entry-description {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 12px;
-  }
 
   .entry-title {
     font-size: 16px;

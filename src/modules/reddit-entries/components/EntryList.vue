@@ -1,7 +1,7 @@
 <template>
   <div class="entry-list-container">
     <div class="entry-scrollable-area">
-      <Entry v-for="entry in entries" :key="entry.id" :entry="entry" />
+      <Entry v-for="entry in paginatedEntries" :key="entry.id" :entry="entry" />
       <div class="pagination">
         <button
           class="btn btn-info text-white"
@@ -33,7 +33,7 @@ export default {
 
   data() {
     return {
-      entriesPerPage: 5,
+      entriesPerPage: 10,
       currentPage: 1,
     };
   },

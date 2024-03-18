@@ -12,14 +12,18 @@
       <div class="entry-title d-flex">
         <span>{{ entry.title }}</span>
       </div>
-      <div class="entry-thumbnail-container" @click="toggleFullscreen">
-        <img class="my-3" :src="entry.thumbnail" alt="thumbnail" />
-        <!-- Pantalla completa -->
-        <div
-          v-if="fullscreen"
-          class="fullscreen-overlay"
+      <div
+        v-if="checkIfImageIsValid(entry.thumbnail)"
+        class="entry-thumbnail-container"
+      >
+        <img
           @click="toggleFullscreen"
-        >
+          class="my-3"
+          :src="entry.thumbnail"
+          alt="thumbnail"
+        />
+        <!-- Pantalla completa -->
+        <div v-if="fullscreen" class="fullscreen-overlay">
           <button
             @click="toggleFullscreen"
             class="btn btn-outline-info exit-fullscreen-btn mx-2"
@@ -86,7 +90,7 @@ export default {
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen;
       if (this.fullscreen) {
-        this.fullscreenImageSrc = isImageUrlValid(this.entry.fullImage)
+        this.fullscreenImageSrc = this.checkIfImageIsValid(this.entry.fullImage)
           ? this.entry.fullImage
           : this.entry.thumbnail;
         // Deshabilitando scroll cuando esta en pantalla completa
@@ -95,6 +99,9 @@ export default {
         // Habilitando scroll cuando no esta en pantalla completa
         document.body.style.overflow = "";
       }
+    },
+    checkIfImageIsValid(url) {
+      return isImageUrlValid(url);
     },
   },
 };
@@ -123,13 +130,14 @@ export default {
   .entry-title {
     font-size: 16px;
     color: #50636a;
+    margin-bottom: 6px;
   }
   .entry-thumbnail-container {
     text-align: center;
     width: 100%;
-    img {
-      width: 80%;
-    }
+    // img {
+    //   width: 80%;
+    // }
   }
 }
 
