@@ -14,3 +14,8 @@ export const updateEntriesReadState = (state, updatedEntries) => {
   });
   state.isLoading = false;
 };
+
+export const setReadEntries = (state, readEntries) => {
+  state.readEntries = [...state.readEntries, ...readEntries];
+  state.isLoading = false;
+};

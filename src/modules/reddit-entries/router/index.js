@@ -26,5 +26,13 @@ export default {
         };
       },
     },
+    {
+      path: "entry-picture-gallery",
+      name: "entry-picture-gallery",
+      component: () =>
+        import(
+          /* webpackChunkName: "entry-picture-gallery" */ "@/modules/reddit-entries/views/EntryPictureGalleryView.vue"
+        ),
+    },
   ],
 };

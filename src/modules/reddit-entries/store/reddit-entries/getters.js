@@ -3,6 +3,16 @@ export const getEntries = (state) => () => {
   return state.entries;
 };
 
+export const getReadEntries = (state) => () => {
+  return state.readEntries;
+};
+
+export const getImagesFromReadEntries = (state) => () => {
+  return state.readEntries.filter((item) =>
+    Object.prototype.hasOwnProperty.call(item, "thumbnail")
+  );
+};
+
 export const getEntryById =
   (state) =>
   (id = "") => {

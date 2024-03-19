@@ -107,6 +107,10 @@ asumiré que se necesita persistir en una base de datos para esto entiendo que p
 
 - Ya se actualizan y se marcan en tiempo real las entradas seleccionadas como leídas.
 
+---
+
+- Agregué una vista para mostrar la galería de imagenes, se puede guardar una imagen en la galería desde el menu de fullscreen de las entradas.
+
 ## Project setup
 
 ```

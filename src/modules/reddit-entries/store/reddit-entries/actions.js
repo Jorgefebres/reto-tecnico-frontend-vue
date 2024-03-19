@@ -43,6 +43,7 @@ export const loadReadEntries = async ({ commit }) => {
     });
   }
   console.log(readEntries);
+  commit("setReadEntries", readEntries);
   commit("updateEntriesReadState", readEntries);
 };
 
@@ -57,4 +58,20 @@ export const markEntryAsRead = async ({ commit }, entry) => {
   });
 
   commit("updateEntriesReadState", readEntries);
+};
+
+export const saveEntryImages = async ({ commit }, entry) => {
+  const { thumbnail, fullImage } = entry;
+  const dataToSave = { thumbnail, fullImage };
+
+  await redditFirebaseAPI.put(`/read-entries/${entry.id}.json`, dataToSave);
+  const entries = [];
+  entries.push({
+    id: entry.id,
+    thumbnail: entry.thumbnail,
+    fullImage: entry.fullImage,
+    read: true,
+  });
+
+  commit("setReadEntries", entries);
 };

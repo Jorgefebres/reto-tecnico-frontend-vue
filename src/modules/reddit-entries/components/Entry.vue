@@ -19,12 +19,17 @@
           alt="thumbnail"
         />
         <div v-if="fullscreen" class="fullscreen-overlay">
-          <button
-            @click="toggleFullscreen"
-            class="btn btn-outline-info exit-fullscreen-btn mx-2"
-          >
-            <i class="fa fa-sign-out-alt"></i>
-          </button>
+          <div class="exit-fullscreen-btns">
+            <button
+              @click="saveEntryToPictureGallery"
+              class="btn btn-outline-info mx-2"
+            >
+              <i class="fa fa-save"></i>
+            </button>
+            <button @click="toggleFullscreen" class="btn btn-outline-info mx-2">
+              <i class="fa fa-sign-out-alt"></i>
+            </button>
+          </div>
           <img :src="fullscreenImageSrc" alt="fullscreen" />
         </div>
       </div>
@@ -45,6 +50,7 @@
 
 <script>
 import isImageUrlValid from "@/modules/helpers/image";
+import { mapActions } from "vuex";
 
 export default {
   name: "Entry",
@@ -78,6 +84,10 @@ export default {
     },
   },
   methods: {
+    ...mapActions("reddit-entries", ["saveEntryImages"]),
+    async saveEntryToPictureGallery() {
+      await this.saveEntryImages(this.entry);
+    },
     goToEntry() {
       this.$router.push({ name: "entry", params: { id: this.entry.id } });
     },
@@ -150,7 +160,7 @@ export default {
   align-items: center;
   z-index: 9999;
 }
-.exit-fullscreen-btn {
+.exit-fullscreen-btns {
   position: absolute;
   top: 10px;
   right: 10px;

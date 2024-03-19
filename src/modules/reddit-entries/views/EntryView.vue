@@ -1,7 +1,7 @@
 <template>
   <div v-if="entry" class="entry-container">
     <div class="entry">
-      <div class="entry-title d-flex">
+      <div class="entry-title d-flex py-3">
         <span>{{ entry.title }}</span>
       </div>
       <div
@@ -11,18 +11,27 @@
         <img
           @click="toggleFullscreen"
           class="pointer py-3"
-          :src="entry.fullImage || entry.thumbnail"
+          :src="
+            checkIfImageIsValid(entry.fullImage)
+              ? entry.fullImage
+              : entry.thumbnail
+          "
           width="80%"
           alt="thumbnail"
         />
         <!-- Pantalla completa -->
         <div v-if="fullscreen" class="fullscreen-overlay">
-          <button
-            @click="toggleFullscreen"
-            class="btn btn-outline-info exit-fullscreen-btn mx-2"
-          >
-            <i class="fa fa-sign-out-alt"></i>
-          </button>
+          <div class="exit-fullscreen-btns">
+            <button
+              @click="saveEntryToPictureGallery"
+              class="btn btn-outline-info mx-2"
+            >
+              <i class="fa fa-save"></i>
+            </button>
+            <button @click="toggleFullscreen" class="btn btn-outline-info mx-2">
+              <i class="fa fa-sign-out-alt"></i>
+            </button>
+          </div>
           <img :src="fullscreenImageSrc" alt="fullscreen" />
         </div>
       </div>
@@ -56,7 +65,10 @@ export default {
   },
 
   methods: {
-    ...mapActions("reddit-entries", ["markEntryAsRead"]),
+    ...mapActions("reddit-entries", ["markEntryAsRead", "saveEntryImages"]),
+    async saveEntryToPictureGallery() {
+      await this.saveEntryImages(this.entry);
+    },
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen;
       if (this.fullscreen) {
@@ -137,7 +149,7 @@ export default {
   z-index: 9999;
 }
 
-.exit-fullscreen-btn {
+.exit-fullscreen-btns {
   position: absolute;
   top: 10px;
   right: 10px;
