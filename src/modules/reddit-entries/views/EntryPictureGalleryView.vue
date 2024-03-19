@@ -11,6 +11,9 @@
             :alt="entry.id"
             class="gallery-image"
             @click="toggleFullscreen(entry)"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Entrar a fullscreen"
           />
         </div>
       </div>
@@ -20,6 +23,9 @@
     <button
       @click="toggleFullscreen(entry)"
       class="btn btn-outline-info exit-fullscreen-btn mx-2"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Salir de fullscreen"
     >
       <i class="fa fa-sign-out-alt"></i>
     </button>

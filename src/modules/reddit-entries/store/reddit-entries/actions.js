@@ -74,3 +74,10 @@ export const saveEntryImages = async ({ commit }, entry) => {
 
   commit("setNewReadEntry", newEntry);
 };
+
+export const removeEntries = ({ commit, state }, entriesToRemove) => {
+  const filteredEntries = state.entries.filter(
+    (entry) => !entriesToRemove.includes(entry)
+  );
+  commit("setEntries", filteredEntries);
+};

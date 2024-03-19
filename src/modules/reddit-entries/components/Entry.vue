@@ -12,6 +12,9 @@
       <div v-if="hasValidThumbnail" class="entry-thumbnail-container">
         <img
           @click="toggleFullscreen"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Entrar a fullscreen"
           class="my-3"
           :height="entry.thumbnailHeight"
           :width="entry.thumbnailWidth"
@@ -23,10 +26,19 @@
             <button
               @click="saveEntryToPictureGallery"
               class="btn btn-outline-info mx-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Guardar en mi galería"
             >
               <i class="fa fa-save"></i>
             </button>
-            <button @click="toggleFullscreen" class="btn btn-outline-info mx-2">
+            <button
+              @click="toggleFullscreen"
+              class="btn btn-outline-info mx-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Salir de fullscreen"
+            >
               <i class="fa fa-sign-out-alt"></i>
             </button>
           </div>
@@ -34,11 +46,29 @@
         </div>
       </div>
       <div class="entry-options-container d-flex justify-content-end gap-3">
-        <button v-if="entry.read" class="btn btn-info text-white">
+        <button
+          @click.stop="deleteEntryFromList"
+          class="btn btn-info text-white"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Descartar entrada"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
+        <button
+          v-if="entry.read"
+          class="btn btn-info text-white"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Entrada leída"
+        >
           <i class="fa fa-check-double"></i>
         </button>
         <button
           class="btn btn-info d-flex align-items-center justify-content-center"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Número de comentarios"
         >
           <i class="fa fa-comment text-white"></i>
           <span class="option text-white">{{ entry.numComments }}</span>
@@ -84,9 +114,15 @@ export default {
     },
   },
   methods: {
-    ...mapActions("reddit-entries", ["saveEntryImages"]),
+    ...mapActions("reddit-entries", ["saveEntryImages", "removeEntries"]),
     async saveEntryToPictureGallery() {
       await this.saveEntryImages(this.entry);
+    },
+    deleteEntryFromList() {
+      this.removeEntries([this.entry]);
+      if (this.entry.id == this.$route.params.id) {
+        this.$router.push({ name: "no-entry-selected" });
+      }
     },
     goToEntry() {
       this.$router.push({ name: "entry", params: { id: this.entry.id } });

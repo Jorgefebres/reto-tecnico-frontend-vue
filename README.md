@@ -111,6 +111,12 @@ asumiré que se necesita persistir en una base de datos para esto entiendo que p
 
 - Agregué una vista para mostrar la galería de imagenes, se puede guardar una imagen en la galería desde el menu de fullscreen de las entradas.
 
+---
+
+- Agregué las ultimas funcionalidades faltantes para remover una entrada en particular y varias (todas las entradas de esa pagina).
+
+- Agregué algunos tooltip de ayuda en los botones para una mejor experiencia de usuario.
+
 ## Project setup
 
 ```

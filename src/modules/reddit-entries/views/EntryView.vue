@@ -9,6 +9,9 @@
         class="entry-thumbnail-container"
       >
         <img
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Entrar a fullscreen"
           @click="toggleFullscreen"
           class="pointer py-3"
           :src="
@@ -25,10 +28,19 @@
             <button
               @click="saveEntryToPictureGallery"
               class="btn btn-outline-info mx-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Guardar en mi galería"
             >
               <i class="fa fa-save"></i>
             </button>
-            <button @click="toggleFullscreen" class="btn btn-outline-info mx-2">
+            <button
+              @click="toggleFullscreen"
+              class="btn btn-outline-info mx-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Salir de fullscreen"
+            >
               <i class="fa fa-sign-out-alt"></i>
             </button>
           </div>
@@ -87,7 +99,7 @@ export default {
     },
     async loadEntry() {
       const entry = this.getEntryById(this.id);
-      if (!entry) return this.$router.push({ name: "no-entry" });
+      if (!entry) return this.$router.push({ name: "no-entry-selected" });
       this.entry = entry;
       if (!entry.read) {
         await this.markEntryAsRead(this.entry);

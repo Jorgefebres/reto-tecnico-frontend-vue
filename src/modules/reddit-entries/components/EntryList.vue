@@ -1,17 +1,25 @@
 <template>
   <div class="entry-list-container">
-    <div class="d-flex justify-content-center py-3">
+    <div class="d-flex justify-content-center py-3 gap-2">
       <button
         class="btn btn-info text-white"
         @click="$router.push({ name: 'entry-picture-gallery' })"
       >
         Galería de imágenes
       </button>
+
+      <button
+        v-if="paginatedEntries.length > 0"
+        class="btn btn-info text-white"
+        @click="deleteEntriesFromList"
+      >
+        Remover entradas
+      </button>
     </div>
     <div class="entry-scrollable-area">
       <Entry v-for="entry in paginatedEntries" :key="entry.id" :entry="entry" />
     </div>
-    <div class="pagination py-2 gap-3">
+    <div class="pagination py-2 gap-3" v-if="paginatedEntries.length > 0">
       <button
         class="btn btn-info text-white"
         @click="prevPage"
@@ -68,7 +76,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("reddit-entries", ["loadReadEntries"]),
+    ...mapActions("reddit-entries", ["loadReadEntries", "removeEntries"]),
     prevPage() {
       if (this.currentPage > 1) {
         this.currentPage--;
@@ -79,6 +87,10 @@ export default {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
       }
+    },
+    deleteEntriesFromList() {
+      this.removeEntries(this.paginatedEntries);
+      this.$router.push({ name: "no-entry-selected" });
     },
   },
 };
