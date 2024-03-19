@@ -1,6 +1,9 @@
 export const setEntries = (state, entries) => {
   state.entries = entries;
-  state.isLoading = false;
+};
+
+export const setLoading = (state, isLoading) => {
+  state.isLoading = isLoading;
 };
 
 export const updateEntriesReadState = (state, updatedEntries) => {
@@ -12,15 +15,12 @@ export const updateEntriesReadState = (state, updatedEntries) => {
       entry.read = updatedEntry.read;
     }
   });
-  state.isLoading = false;
 };
 
 export const setReadEntries = (state, readEntries) => {
   state.readEntries = readEntries;
-  state.isLoading = false;
 };
 
 export const setNewReadEntry = (state, readEntry) => {
   state.readEntries = [...state.readEntries, readEntry];
-  state.isLoading = false;
 };

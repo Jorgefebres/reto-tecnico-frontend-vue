@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  color: #50636a;
+}
 .container {
   width: 100%;
   height: 100vh;

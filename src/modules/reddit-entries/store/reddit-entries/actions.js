@@ -2,6 +2,7 @@ import redditAPI from "@/api/redditAPI";
 import redditFirebaseAPI from "@/api/redditFirebaseAPI";
 
 export const loadEntries = async ({ commit }) => {
+  commit("setLoading", true);
   const { data } = await redditAPI.get("/top.json?limit=50");
   if (!data) {
     commit("setEntries", []);
@@ -24,8 +25,8 @@ export const loadEntries = async ({ commit }) => {
       read: false,
     };
   });
-  console.log(redditPosts);
   commit("setEntries", redditPosts);
+  commit("setLoading", false);
 };
 
 export const loadReadEntries = async ({ commit }) => {
@@ -42,7 +43,6 @@ export const loadReadEntries = async ({ commit }) => {
       ...data[id],
     });
   }
-  console.log(readEntries);
   commit("setReadEntries", readEntries);
   commit("updateEntriesReadState", readEntries);
 };
@@ -61,8 +61,8 @@ export const markEntryAsRead = async ({ commit }, entry) => {
 };
 
 export const saveEntryImages = async ({ commit }, entry) => {
-  const { thumbnail, fullImage } = entry;
-  const dataToSave = { thumbnail, fullImage };
+  const { thumbnail, fullImage, read } = entry;
+  const dataToSave = { thumbnail, fullImage, read };
 
   await redditFirebaseAPI.put(`/read-entries/${entry.id}.json`, dataToSave);
   const newEntry = {

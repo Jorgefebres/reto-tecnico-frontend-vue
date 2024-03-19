@@ -9,6 +9,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  color: #50636a;
+}
 div {
   height: 100%;
 }
