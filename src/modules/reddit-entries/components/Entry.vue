@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="entry-container"
-    @click="$router.push({ name: 'entry', params: { id: entry.id } })"
-  >
+  <div class="entry-container" @click="goToEntry">
     <div class="entry mb-3 pointer p-2">
       <div class="entry-description">
         <img src="@/assets/logo.webp" alt="avatar" height="20" width="20" />
@@ -12,10 +9,7 @@
       <div class="entry-title d-flex">
         <span>{{ entry.title }}</span>
       </div>
-      <div
-        v-if="checkIfImageIsValid(entry.thumbnail)"
-        class="entry-thumbnail-container"
-      >
+      <div v-if="hasValidThumbnail" class="entry-thumbnail-container">
         <img
           @click="toggleFullscreen"
           class="my-3"
@@ -24,7 +18,6 @@
           :src="entry.thumbnail"
           alt="thumbnail"
         />
-        <!-- Pantalla completa -->
         <div v-if="fullscreen" class="fullscreen-overlay">
           <button
             @click="toggleFullscreen"
@@ -55,21 +48,15 @@ import isImageUrlValid from "@/modules/helpers/image";
 
 export default {
   name: "Entry",
-
   props: {
-    entry: {
-      type: Object,
-      required: true,
-    },
+    entry: { type: Object, required: true },
   },
-
   data() {
     return {
       fullscreen: false,
       fullscreenImageSrc: "",
     };
   },
-
   computed: {
     getHoursAgo() {
       // Timestamp del post
@@ -86,9 +73,14 @@ export default {
       const diffInHoursRounded = Math.round(diffInHours * 100) / 100;
       return Math.round(Math.abs(diffInHoursRounded));
     },
+    hasValidThumbnail() {
+      return this.checkIfImageIsValid(this.entry.thumbnail);
+    },
   },
-
   methods: {
+    goToEntry() {
+      this.$router.push({ name: "entry", params: { id: this.entry.id } });
+    },
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen;
       if (this.fullscreen) {
@@ -129,7 +121,6 @@ export default {
     gap: 6px;
     font-size: 12px;
   }
-
   .entry-title {
     font-size: 16px;
     color: #50636a;
@@ -140,7 +131,6 @@ export default {
     width: 100%;
   }
 }
-
 .entry-options-container {
   .option {
     font-size: 12px;
@@ -148,7 +138,6 @@ export default {
     margin-top: 4px;
   }
 }
-
 .fullscreen-overlay {
   position: fixed;
   top: 0;
@@ -161,18 +150,15 @@ export default {
   align-items: center;
   z-index: 9999;
 }
-
 .exit-fullscreen-btn {
   position: absolute;
   top: 10px;
   right: 10px;
 }
-
 .fullscreen-overlay img {
   max-width: 90vw;
   max-height: 90vh;
 }
-
 @media screen and (max-width: 768px) {
   .entry {
     width: 90%;
