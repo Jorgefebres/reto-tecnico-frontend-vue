@@ -42,7 +42,7 @@
 
 <script>
 import isImageUrlValid from "@/modules/helpers/image";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "EntryView",
@@ -66,6 +66,7 @@ export default {
   },
 
   methods: {
+    ...mapActions("reddit-entries", ["markEntryAsRead"]),
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen;
       if (this.fullscreen) {
@@ -82,10 +83,13 @@ export default {
     checkIfImageIsValid(url) {
       return isImageUrlValid(url);
     },
-    loadEntry() {
+    async loadEntry() {
       const entry = this.getEntryById(this.id);
       if (!entry) return this.$router.push({ name: "no-entry" });
       this.entry = entry;
+      if (!entry.read) {
+        await this.markEntryAsRead(this.entry);
+      }
     },
   },
 

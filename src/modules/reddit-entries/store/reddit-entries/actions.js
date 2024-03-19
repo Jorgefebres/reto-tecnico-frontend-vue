@@ -45,3 +45,16 @@ export const loadReadEntries = async ({ commit }) => {
   console.log(readEntries);
   commit("updateEntriesReadState", readEntries);
 };
+
+export const markEntryAsRead = async ({ commit }, entry) => {
+  const dataToSave = { read: true };
+
+  await redditFirebaseAPI.put(`/read-entries/${entry.id}.json`, dataToSave);
+  const readEntries = [];
+  readEntries.push({
+    id: entry.id,
+    read: true,
+  });
+
+  commit("updateEntriesReadState", readEntries);
+};
