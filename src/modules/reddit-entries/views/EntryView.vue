@@ -1,6 +1,6 @@
 <template>
   <div v-if="entry" class="entry-container">
-    <div class="entry mb-3 p-2">
+    <div class="entry">
       <div class="entry-title d-flex">
         <span>{{ entry.title }}</span>
       </div>
@@ -10,8 +10,9 @@
       >
         <img
           @click="toggleFullscreen"
-          class="pointer my-3"
-          :src="entry.thumbnail"
+          class="pointer py-3"
+          :src="entry.fullImage || entry.thumbnail"
+          width="80%"
           alt="thumbnail"
         />
         <!-- Pantalla completa -->
@@ -24,17 +25,6 @@
           </button>
           <img :src="fullscreenImageSrc" alt="fullscreen" />
         </div>
-      </div>
-      <div class="entry-options-container d-flex justify-content-end gap-3">
-        <!-- <button class="btn btn-info text-white">
-          <i class="fa fa-check-double"></i>
-        </button>
-        <button
-          class="btn btn-info d-flex align-items-center justify-content-center"
-        >
-          <i class="fa fa-comment text-white"></i>
-          <span class="option text-white">{{ entry.numComments }}</span>
-        </button> -->
       </div>
     </div>
   </div>
@@ -107,13 +97,15 @@ export default {
 
 <style lang="scss" scoped>
 .entry-container {
+  height: calc(100vh - 56px);
+  overflow: scroll;
   display: flex;
   justify-content: center;
 }
 .entry {
   width: 90%;
   transition: 0.2s all ease-in;
-
+  margin-bottom: 10px;
   .entry-title {
     font-size: 16px;
     color: #50636a;

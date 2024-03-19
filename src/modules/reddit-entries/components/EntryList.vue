@@ -91,5 +91,7 @@ export default {
   display: flex;
   gap: 12px;
   justify-content: center;
+
+  margin-bottom: 10px;
 }
 </style>
