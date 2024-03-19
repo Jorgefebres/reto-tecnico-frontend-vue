@@ -103,6 +103,10 @@ asumiré que se necesita persistir en una base de datos para esto entiendo que p
 
 ![Leido desde firebase](https://res.cloudinary.com/dhromiae3/image/upload/v1710812214/reto-tecnico/n0hprvahqxzurdiifbfo.png)
 
+---
+
+- Ya se actualizan y se marcan en tiempo real las entradas seleccionadas como leídas.
+
 ## Project setup
 
 ```
