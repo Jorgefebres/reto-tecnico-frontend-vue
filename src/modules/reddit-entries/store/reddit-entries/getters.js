@@ -1,5 +1,5 @@
 // de momento enviare en este getter la data, normalmente aca se trabaja data modificada o filtrada.
-export const getTopEntries = (state) => () => {
+export const getEntries = (state) => () => {
   return state.entries;
 };
 

@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar bg-info">
-    <a class="navbar-brand text-white" href=""
+    <a class="navbar-brand text-white" @click="$router.push({ name: 'home' })"
       ><img
         src="@/assets/logo.webp"
         alt="reddit logo"

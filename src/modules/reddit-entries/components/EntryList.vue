@@ -24,7 +24,7 @@
 
 <script>
 import { defineAsyncComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
@@ -38,10 +38,14 @@ export default {
     };
   },
 
+  created() {
+    this.loadReadEntries();
+  },
+
   computed: {
-    ...mapGetters("reddit-entries", ["getTopEntries"]),
+    ...mapGetters("reddit-entries", ["getEntries"]),
     entries() {
-      return this.getTopEntries();
+      return this.getEntries();
     },
 
     totalPages() {
@@ -56,6 +60,7 @@ export default {
   },
 
   methods: {
+    ...mapActions("reddit-entries", ["loadReadEntries"]),
     prevPage() {
       if (this.currentPage > 1) {
         this.currentPage--;

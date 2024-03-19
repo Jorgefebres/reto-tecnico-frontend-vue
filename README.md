@@ -93,6 +93,16 @@ asumiré que se necesita persistir en una base de datos para esto entiendo que p
 
 - Arreglando el ancho y alto de las imagenes y de la pantalla de bienvenida.
 
+---
+
+- Arreglando algunos estilos y navegación.
+
+- Creé una base de datos en firebase para guardar la data q necesito para saber si una entrada ha sido leida y posteriormente su imagen para poder listarla posteriormente en una galeria.
+
+- Ya se muestran las entradas leidas segun la respuesta de la base de datos de firebase.
+
+![Leido desde firebase](https://res.cloudinary.com/dhromiae3/image/upload/v1710812214/reto-tecnico/n0hprvahqxzurdiifbfo.png)
+
 ## Project setup
 
 ```

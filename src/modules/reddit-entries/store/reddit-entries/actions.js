@@ -1,13 +1,12 @@
 import redditAPI from "@/api/redditAPI";
+import redditFirebaseAPI from "@/api/redditFirebaseAPI";
 
 export const loadEntries = async ({ commit }) => {
   const { data } = await redditAPI.get("/top.json?limit=50");
-  console.log(data);
   if (!data) {
     commit("setEntries", []);
     return;
   }
-
   const redditPosts = data.data.children.map((child) => {
     return {
       id: child.data.id,
@@ -25,26 +24,24 @@ export const loadEntries = async ({ commit }) => {
       read: false,
     };
   });
-
-  //   redditPosts.forEach((post) => {
-  //     // Identificador del autor del post
-  //     const authorFullname = post.author_fullname;
-  //     // URL base de la imagen del perfil del usuario en Reddit
-  //     const profileImageUrlBase = "https://www.reddit.com/user/";
-  //     // Si hay un identificador de autor válido
-  //     if (authorFullname) {
-  //       // Construir la URL de la imagen del perfil del usuario
-  //       const profileImageUrl = `${profileImageUrlBase}${authorFullname}/avatar`;
-  //       // Mostrar la URL de la imagen del perfil del usuario
-  //       console.log(profileImageUrl);
-  //     } else {
-  //       console.log("No se encontró el identificador del autor del post.");
-  //     }
-  //     return {
-  //       ...post,
-  //     };
-  //   });
   console.log(redditPosts);
-
   commit("setEntries", redditPosts);
+};
+
+export const loadReadEntries = async ({ commit }) => {
+  const { data } = await redditFirebaseAPI.get("/read-entries.json");
+
+  if (!data) {
+    return;
+  }
+
+  const readEntries = [];
+  for (let id of Object.keys(data)) {
+    readEntries.push({
+      id,
+      ...data[id],
+    });
+  }
+  console.log(readEntries);
+  commit("updateEntriesReadState", readEntries);
 };

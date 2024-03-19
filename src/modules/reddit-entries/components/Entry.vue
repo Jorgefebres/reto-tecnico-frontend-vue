@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="entry-options-container d-flex justify-content-end gap-3">
-        <button class="btn btn-info text-white">
+        <button v-if="entry.read" class="btn btn-info text-white">
           <i class="fa fa-check-double"></i>
         </button>
         <button
@@ -116,6 +116,7 @@ export default {
 }
 .entry {
   width: 90%;
+  border-radius: 12px 12px 0 0;
   border-bottom: 1px solid #2e3e50;
   transition: 0.2s all ease-in;
   &:hover {
