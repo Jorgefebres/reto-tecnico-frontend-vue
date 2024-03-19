@@ -65,13 +65,12 @@ export const saveEntryImages = async ({ commit }, entry) => {
   const dataToSave = { thumbnail, fullImage };
 
   await redditFirebaseAPI.put(`/read-entries/${entry.id}.json`, dataToSave);
-  const entries = [];
-  entries.push({
+  const newEntry = {
     id: entry.id,
     thumbnail: entry.thumbnail,
     fullImage: entry.fullImage,
     read: true,
-  });
+  };
 
-  commit("setReadEntries", entries);
+  commit("setNewReadEntry", newEntry);
 };

@@ -76,6 +76,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  color: #50636a;
+}
 .fullscreen-overlay {
   position: fixed;
   top: 0;
